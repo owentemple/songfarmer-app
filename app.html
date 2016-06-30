@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>Songfarmer App</title>
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="favicon.png" rel="icon" type="image/png" />
+    
+	
+</head>
+<body>
+<header>
+	<div class="nav">
+	<ul>
+		<li><a href="http://app.songfarmer.com">Home</a></li>
+		<li><a href="http://www.songfarmer.com">Blog</a></li>
+		<li><a href="https://www.facebook.com/Songfarmer-1794554584104702">Facebook</a></li>
+		<li><a href="https://www.twitter.com/songfarmers">Twitter</a></li>
+		<li><a href="https://songfarmer.bandcamp.com/merch/songfarmer-workshop-registration">Workshop</a></li>
+		<li><a href="http://songfarmer.bandcamp.com/merch/songfarmer-writing-more-and-better-songs">Book</a></li>
+	</ul>
+</div>
+<header>
+
+	<div><a href="app.html"><img alt="Songfarmer App" class="displayed" src="images/songfarmer-logo.jpg" width="600" /></a></div>
+<p>The buttons below will generate song seeds for you to get started working on a song.</p>
+<p>The Setting button will generate a seed with a specific place in the world<br>and a time for you to begin to flow, or create ideas for a song.</p>
+<p>The Type button will generate a seed that describes a type of song,<br> chosen from the 11 broad categories of songs that Bob Dylan writes.</br> Here's an <a href="http://bob-dylan.org.uk/dylans-songs" target="_blank">article</a> with more details on each of the song types in the Dylan song classification.</p>
+
+
+<img src="images/blue-button-hi-setting.png" class = "button" id ="settingButton" width="200" height="76"></a>
+
+</br>
+
+
+<img src="images/purple-button-hi-type.png" width="200" height="76" class="button" id="frameButton">
+<br>
+<h2 id="settingPlace"></h2>
+<h2 id="settingOther"></h2>
+<h2 id="frame"></h2> 
+<p>The button below will help you cultivate your Songfarming habits.</p>
+
+<img src="images/green-button-with-text.png" class = "button" id ="habitButton" width="200" height="76"></a>
+<div class="masterTooltip" title="NORMAL focus session averages 15 minutes, MINI focus session averages 5 minutes. All optional additional sessions average 15 minutes.">
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+</div>
+</br>
+<h1>Today's Score</h1>
+<p id="score">0</p>
+<br>
+<h1>Log</h1> 
+<p id="log"></p>
+</br>
+<h1>Process</h1>
+<img src="images/songfarmer-map.jpg" width="400">
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
+</body>
+</html>
