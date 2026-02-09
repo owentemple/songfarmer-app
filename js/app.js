@@ -246,7 +246,7 @@ function getMaxTimer() {
 }
 
 function getScoreIncrement() {
-  return isNormalMode() ? 1 : 5;
+  return isNormalMode() ? 5 : 1;
 }
 
 function updateScoreDisplay() {
