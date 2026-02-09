@@ -1,82 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<title>Songfarmer App</title>
-	<link href="css/style.css" rel="stylesheet" />
-	<link href="favicon.png" rel="icon" type="image/png" />
-
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Songfarmer App</title>
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="favicon.png" rel="icon" type="image/png" />
 </head>
 <body>
+
 <header>
-	<div class="nav">
-	<ul>
-		<li><a href="http://app.songfarmer.com">Home</a></li>
-		<li><a href="http://www.songfarmer.com">Blog</a></li>
-		<li><a href="https://www.facebook.com/Songfarmer-1794554584104702">Facebook</a></li>
-		<li><a href="https://www.twitter.com/songfarmers">Twitter</a></li>
-		<li><a href="https://songfarmer.bandcamp.com/merch/songfarmer-workshop-registration">Workshop</a></li>
-		<li><a href="http://songfarmer.bandcamp.com/merch/songfarmer-writing-more-and-better-songs">Book</a></li>
-	</ul>
+  <div class="nav">
+    <ul>
+      <li><a href="http://app.songfarmer.com">Home</a></li>
+      <li><a href="http://www.songfarmer.com">Blog</a></li>
+      <li><a href="https://www.facebook.com/Songfarmer-1794554584104702">Facebook</a></li>
+      <li><a href="https://www.twitter.com/songfarmers">Twitter</a></li>
+      <li><a href="https://songfarmer.bandcamp.com/merch/songfarmer-workshop-registration">Workshop</a></li>
+      <li><a href="http://songfarmer.bandcamp.com/merch/songfarmer-writing-more-and-better-songs">Book</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="hero">
+  <img alt="Songfarmer App" src="images/songfarmer-logo.jpg" />
+  <p class="tagline">Generate song seeds to spark your next composition.</p>
 </div>
-<header>
 
-	<div><a href="app.html"><img alt="Songfarmer App" class="displayed" src="images/songfarmer-logo.jpg" width="600" /></a></div>
-<p>The buttons below will generate song seeds for you to get started working on a song.</p>
-<p>The Setting button will generate a seed with a specific place in the world<br>and a time for you to begin to flow, or create ideas for a song.</p>
-<br>
+<div class="container">
 
+  <!-- ===== Setting ===== -->
+  <div class="seed-section text-center">
+    <h2>Setting</h2>
+    <p class="description">Generate a place, time, and direction to ground your song in a specific moment.</p>
+    <div class="setting-options">
+      <label class="setting-option">
+        <input type="radio" name="locationType" value="cities" checked />
+        100 Largest U.S. Cities
+      </label>
+      <label class="setting-option">
+        <input type="radio" name="locationType" value="states" />
+        50 U.S. States
+      </label>
+      <label class="setting-option">
+        <input type="radio" name="locationType" value="world" />
+        World Cities
+      </label>
+    </div>
+    <button class="seed-btn seed-btn--setting" id="settingButton">Roll Setting</button>
+    <div class="seed-result" id="settingResult"></div>
+  </div>
 
-<img src="images/blue-button-hi-setting.png" class = "button" id ="settingButton" width="200" height="76"></a>
+  <!-- ===== Type ===== -->
+  <div class="seed-section text-center">
+    <h2>Song Type</h2>
+    <p class="description">A category of song drawn from Bob Dylan's broad songwriting taxonomy. <a href="http://bob-dylan.org.uk/dylans-songs" target="_blank">Learn more about the types.</a></p>
+    <button class="seed-btn seed-btn--type" id="frameButton">Roll Type</button>
+    <div class="seed-result" id="frameResult"></div>
+  </div>
 
-<h2 id="settingPlace"></h2>
-<h2 id="settingOther"></h2>
-<p>The Type button will generate a seed that describes a type of song,<br> chosen from the 11 broad categories of songs that Bob Dylan writes.</p>(Here's an <a href="http://bob-dylan.org.uk/dylans-songs" target="_blank">article</a> with more details on each of the song types in the Dylan song classification.)<br><br>
+  <!-- ===== Theme ===== -->
+  <div class="seed-section text-center">
+    <h2>Theme</h2>
+    <p class="description">A character strength or virtue from the 24 identified by psychologists Seligman &amp; Peterson. <a href="http://www.viacharacter.org/www/Character-Strengths/VIA-Classification" target="_blank">Explore the classification.</a></p>
+    <button class="seed-btn seed-btn--theme" id="themeButton">Roll Theme</button>
+    <div class="seed-result" id="themeResult"></div>
+  </div>
 
+  <!-- ===== Generate All ===== -->
+  <div class="seed-section text-center">
+    <h2>Generate a Complete Prompt</h2>
+    <p class="description">Get a setting, song type, and theme all at once &mdash; everything you need to start writing.</p>
+    <button class="seed-btn seed-btn--generate-all" id="generateAllBtn">Generate Song Seed</button>
+    <div class="combined-result" id="combinedResult"></div>
+  </div>
 
-<img src="images/purple-button-hi-type.png" width="200" height="76" class="button" id="frameButton">
-<br>
+  <!-- ===== Habits ===== -->
+  <div class="seed-section">
+    <h2 class="text-center">Cultivate Your Habits</h2>
+    <p class="description text-center">Build your four daily songwriting habits: Writing, Performing, Listening, and Reading. Pick a habit, start a timed focus session, and track your score.</p>
 
+    <div class="habit-controls">
+      <div class="mode-toggle">
+        <span class="mode-label" id="miniLabel">Mini</span>
+        <label class="mode-toggle-switch">
+          <input type="checkbox" id="modeSwitch" checked />
+          <span class="mode-toggle-slider"></span>
+        </label>
+        <span class="mode-label mode-label--active" id="normalLabel">Normal</span>
+      </div>
+      <button class="seed-btn seed-btn--habit" id="habitButton">Start Habits</button>
+      <button class="reset-all-btn" id="resetAllBtn" style="display:none;">Reset All Habits</button>
+    </div>
 
-<h2 id="frame"></h2>
-<br>
-<p>The Theme button will generate a seed that describes a value or theme,<br> chosen from the 24 character strengths and virtues identified by psychologists Martin Seligman and Chris Peterson.</p>(Here's an <a href="http://www.viacharacter.org/www/Character-Strengths/VIA-Classification" target="_blank">article</a> with more details on each of the character strengths in the classification.)<br><br>
+    <div class="habit-cards" id="habitCards">
+      <div class="habit-card" id="habitCard-writing" data-habit="Writing">
+        <div class="habit-icon">&#9998;</div>
+        <div class="habit-name">Writing</div>
+        <div class="habit-status">Ready</div>
+      </div>
+      <div class="habit-card" id="habitCard-performing" data-habit="Performing">
+        <div class="habit-icon">&#9835;</div>
+        <div class="habit-name">Performing</div>
+        <div class="habit-status">Ready</div>
+      </div>
+      <div class="habit-card" id="habitCard-listening" data-habit="Listening">
+        <div class="habit-icon">&#9834;</div>
+        <div class="habit-name">Listening</div>
+        <div class="habit-status">Ready</div>
+      </div>
+      <div class="habit-card" id="habitCard-reading" data-habit="Reading">
+        <div class="habit-icon">&#128214;</div>
+        <div class="habit-name">Reading</div>
+        <div class="habit-status">Ready</div>
+      </div>
+    </div>
 
+    <div class="timer-area" id="timerArea">
+      <div class="timer-label" id="timerLabel">Focus on Writing for 12 minutes</div>
+      <div class="timer-display" id="timerDisplay">12:00</div>
+      <div class="timer-buttons" id="timerButtons">
+        <button class="timer-btn timer-btn--start" id="timerStartBtn">Start Timer</button>
+        <button class="timer-btn timer-btn--skip" id="timerSkipBtn">Skip</button>
+      </div>
+    </div>
+  </div>
 
-<img src="images/orange-button-with-text.png" width="200" height="76" class="button" id="themeButton">
-<br>
+  <!-- ===== Score ===== -->
+  <div class="score-section">
+    <div class="score-display">
+      <div>
+        <div class="score-number" id="scoreDisplay">0</div>
+        <div class="score-label">Today's Score</div>
+      </div>
+    </div>
+    <div class="streak-info" id="streakInfo"></div>
+  </div>
 
+  <!-- ===== Log ===== -->
+  <div class="log-section">
+    <h2>Session Log</h2>
+    <ul class="log-entries" id="logEntries">
+      <li class="log-empty" id="logEmpty">No sessions yet today. Start a habit above!</li>
+    </ul>
+    <button class="clear-log-btn" id="clearLogBtn" style="display:none;">Clear Today's Log</button>
+  </div>
 
-<h2 id="theme"></h2>
-<br>
+  <!-- ===== Process ===== -->
+  <div class="process-section">
+    <h2>The Songfarmer Process</h2>
+    <img src="images/model-1.jpg" alt="Songfarmer process workflow" />
+  </div>
 
-
-<p>The button below will help you cultivate your Songfarming habits.</p>
-
-<img src="images/green-button-with-text.png" class = "button" id ="habitButton" width="200" height="76"></a>
-<div class="masterTooltip" title="NORMAL focus session averages 15 minutes, MINI focus session averages 5 minutes. All optional additional sessions average 15 minutes.">
-<div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
 </div>
-</div>
-</br>
-<h1>Today's Score</h1>
-<p id="score">0</p>
-<br>
-<h1>Log</h1>
-<p id="log"></p>
-</br>
-<h1>Process</h1>
-<img src="images/model-1.jpg" width="400">
 
+<footer class="footer">
+  Songfarmer &copy; 2024
+</footer>
 
-<script src="js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
