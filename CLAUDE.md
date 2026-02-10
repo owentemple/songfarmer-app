@@ -28,7 +28,7 @@ Plain HTML/CSS/JS — no dependencies, no build tools, no package manager.
 - **No frameworks or transpilation** — edit files directly; changes are immediately live
 - **UI visibility** — sections show/hide by adding/removing the `visible` CSS class (e.g., `.seed-result.visible`, `.habit-cards.visible`)
 - **Result animation** — `showResult()` strips then re-adds `visible` class with a reflow trick (`void el.offsetWidth`) to retrigger CSS `fadeIn` animation
-- **Timer modes** — "Normal" (up to 30 min, +1 pt) vs "Mini" (up to 5 min, +5 pts), controlled by `modeSwitch` checkbox
+- **Timer modes** — "Normal" (up to 30 min, +5 pts) vs "Mini" (up to 5 min, +1 pt), controlled by `modeSwitch` checkbox
 - **Daily data shape**: `{ score: number, log: Array<{habit, minutes, points, time}>, completedHabits: string[] }`
 
 ## Development
@@ -38,3 +38,11 @@ Open `index.html` in a browser. No server required (though a local server avoids
 ```
 python3 -m http.server 8000
 ```
+
+## Hosting & Deployment
+
+- Hosted on GoDaddy shared hosting with cPanel, Apache server
+- SSL: Sectigo certificate covering app.songfarmer.com
+- Git remote: https://github.com/owentemple/songfarmer-app.git (branch: `master`)
+- Deploy by uploading files via cPanel File Manager or FTP
+- `.htaccess` on server forces HTTP→HTTPS redirect
