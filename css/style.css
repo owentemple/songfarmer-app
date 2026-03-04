@@ -196,6 +196,13 @@ body {
   background-color: var(--color-green-dark);
 }
 
+.seed-btn--color {
+  background-color: var(--color-red);
+}
+.seed-btn--color:hover {
+  background-color: #A83025;
+}
+
 .seed-btn--generate-all {
   background-color: var(--color-earth);
   padding: 16px 40px;
@@ -259,6 +266,15 @@ body {
   color: var(--color-text-light);
   font-family: var(--font-sans);
   line-height: 1.5;
+}
+
+.color-swatch {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  margin: 12px auto 0;
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 @keyframes fadeIn {
