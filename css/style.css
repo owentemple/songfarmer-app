@@ -203,6 +203,13 @@ body {
   background-color: #A83025;
 }
 
+.seed-btn--dylan {
+  background-color: #2C3E50;
+}
+.seed-btn--dylan:hover {
+  background-color: #1A252F;
+}
+
 .seed-btn--generate-all {
   background-color: var(--color-earth);
   padding: 16px 40px;

@@ -220,6 +220,27 @@ var crayonColors = [
   { name: 'Yellow Orange', hex: '#FFB653' }
 ];
 
+var dylanWords = [
+  'the', 'and', 'I', 'to', 'a', 'in', 'of', 'you', 'my', 'me', 'on', 'that', 'with', 'all',
+  'for', 'it', 'your', 'was', 'be', 'from', 'by', 'this', 'as', 'have', 'is', 'but', 'not',
+  'he', 'at', 'are', 'we', 'like', 'no', 'she', 'when', 'will', 'can', 'if', 'up', 'so',
+  'they', 'an', 'or', 'one', 'do', 'who', 'there', 'been', 'his', 'what', 'out', 'down',
+  'would', 'time', 'just', 'now', 'love', 'their', 'go', 'man', 'more', 'know', 'them', 'got',
+  'see', 'say', 'then', 'were', 'over', 'come', 'night', 'back', 'am', 'where', 'get', 'day',
+  'way', 'only', 'here', 'never', 'heart', "goin'", 'world', 'well', 'about', 'take', 'make',
+  'how', 'our', 'life', "don't", 'want', 'away', 'long', 'sun', "'bout", 'still', 'could',
+  'before', 'after', 'old', 'tell', 'let', 'these', 'through', 'those', 'people', 'feel',
+  "'em", "'cause", 'look', 'us', 'eyes', 'good', 'girl', 'mine', 'too', 'little', 'off',
+  'right', 'keep', 'made', 'think', "ain't", 'some', 'left', 'much', 'mind', 'wind', 'another',
+  'last', 'hand', 'other', 'every', "'til", 'why', 'even', 'find', 'baby', 'again', 'place',
+  'while', 'head', 'road', 'once', 'call', 'hands', 'face', 'most', 'without', 'need', 'boy',
+  "time's", 'new', 'round', 'someone', 'name', "everythin'", 'gonna', 'give', 'door', 'better',
+  'light', 'same', "night's", 'lord', 'might', 'rain', 'hard', 'under', 'part', 'must', 'true',
+  'done', "'round", 'blues', "way's", 'song', 'nothing', 'wait', 'next', 'someplace', 'inside',
+  "away's", "much's", 'along', 'river', 'big', 'train', 'deep', "when's", 'home', 'living',
+  'mean', "'gain", 'house', 'turn', 'water', 'end', 'city'
+];
+
 var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 var directions = ['North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest'];
 
@@ -343,6 +364,21 @@ function generateColor() {
   return color;
 }
 
+// ===== Dylan Words Seed =====
+
+function generateDylanWords() {
+  var words = [];
+  var pool = dylanWords.slice();
+  for (var i = 0; i < 7 && pool.length > 0; i++) {
+    var idx = Math.floor(Math.random() * pool.length);
+    words.push(pool[idx]);
+    pool.splice(idx, 1);
+  }
+  var html = '<div class="result-text"><strong>' + words.join(', ') + '</strong></div>';
+  showResult(document.getElementById('dylanResult'), html);
+  return words;
+}
+
 // ===== Generate All =====
 
 function generateAll() {
@@ -350,6 +386,7 @@ function generateAll() {
   var type = generateType();
   var theme = generateTheme();
   var color = generateColor();
+  var words = generateDylanWords();
 
   var html = '<div class="result-line">You\u2019re in <strong>' + setting.location + '</strong>. ' +
     'It\u2019s <strong>' + setting.hour + '</strong> on a <strong>' + setting.day + '</strong>, ' +
@@ -358,7 +395,8 @@ function generateAll() {
     '<div class="result-detail">' + type.desc + '</div>' +
     '<div class="result-detail" style="margin-top:2px;">' + theme.desc + '</div>' +
     '<div class="result-line" style="margin-top:8px;">The color is <strong>' + color.name + '</strong>.</div>' +
-    '<div class="color-swatch" style="background-color:' + color.hex + ';"></div>';
+    '<div class="color-swatch" style="background-color:' + color.hex + ';"></div>' +
+    '<div class="result-line" style="margin-top:8px;">Dylan words: <strong>' + words.join(', ') + '</strong></div>';
 
   showResult(document.getElementById('combinedResult'), html);
 }
@@ -635,6 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('frameButton').addEventListener('click', generateType);
   document.getElementById('themeButton').addEventListener('click', generateTheme);
   document.getElementById('colorButton').addEventListener('click', generateColor);
+  document.getElementById('dylanButton').addEventListener('click', generateDylanWords);
   document.getElementById('generateAllBtn').addEventListener('click', generateAll);
 
   // Habit button
